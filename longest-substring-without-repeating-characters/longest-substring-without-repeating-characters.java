@@ -2,9 +2,9 @@ class Solution {
     public int lengthOfLongestSubstring(String s)
     {
         HashMap<Character, Integer> map = new HashMap<>();
-        int maxCount = 0, count = 0;
+        int maxCount = 0, count = 0, n = s.length();
         
-        for (int i = 0; i < s.length(); i++)
+        for (int i = 0; i < n; i++)
         {
             if (!map.containsKey(s.charAt(i)))
             {

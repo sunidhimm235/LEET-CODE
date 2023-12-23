@@ -5,41 +5,13 @@ class Solution {
         
         for (int i = 0; i < s.length(); i++)
         {
-            if (i < s.length() - 1 && s.charAt(i) == 'I')
+            if (i < s.length() - 1 && isReverse(s.charAt(i), s.charAt(i + 1)))
             {
-                if (s.charAt(i + 1) == 'V' || s.charAt(i + 1) == 'X')
-                {
-                    number += (romanValue(s.charAt(i + 1)) - romanValue(s.charAt(i)));
-                    i++;
-                }
-                else
-                    number += romanValue(s.charAt(i));
-                
-            }
-            else if (i < s.length() - 1 && s.charAt(i) == 'X')
-            {
-                if (s.charAt(i + 1) == 'L' || s.charAt(i + 1) == 'C')
-                {
-                    number += (romanValue(s.charAt(i + 1)) - romanValue(s.charAt(i)));
-                    i++;
-                }
-                else
-                    number += romanValue(s.charAt(i));
-            }
-            else if (i < s.length() - 1 && s.charAt(i) == 'C')
-            {
-                if (s.charAt(i + 1) == 'D' || s.charAt(i + 1) == 'M')
-                {
-                    number += (romanValue(s.charAt(i + 1)) - romanValue(s.charAt(i)));
-                    i++;
-                }
-                else
-                    number += romanValue(s.charAt(i));
+                number += (romanValue(s.charAt(i + 1)) - romanValue(s.charAt(i)));
+                i++;
             }
             else
                 number += romanValue(s.charAt(i));
-            
-            // System.out.println(number);
         }
         
         return number;
@@ -55,5 +27,19 @@ class Solution {
         if (c == 'D') return 500;
         
         return 1000;
+    }
+    
+    public boolean isReverse(char c1, char c2)
+    {
+        if (c1 == 'I')
+            return (c2 == 'V' || c2 == 'X');
+            
+        if (c1 == 'X')
+            return (c2 == 'L' || c2 == 'C');
+        
+        if (c1 == 'C')
+            return (c2 == 'D' || c2 == 'M');
+        
+        return false;
     }
 }

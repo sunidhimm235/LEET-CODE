@@ -7,14 +7,9 @@ class Solution {
         {
             if (i < s.length() - 1 && s.charAt(i) == 'I')
             {
-                if (s.charAt(i + 1) == 'V')
+                if (s.charAt(i + 1) == 'V' || s.charAt(i + 1) == 'X')
                 {
-                    number += (romanValue('V') - romanValue('I'));
-                    i++;
-                }
-                else if (s.charAt(i + 1) == 'X')
-                {
-                    number += (romanValue('X') - romanValue('I'));
+                    number += (romanValue(s.charAt(i + 1)) - romanValue(s.charAt(i)));
                     i++;
                 }
                 else
@@ -23,14 +18,9 @@ class Solution {
             }
             else if (i < s.length() - 1 && s.charAt(i) == 'X')
             {
-                if (s.charAt(i + 1) == 'L')
+                if (s.charAt(i + 1) == 'L' || s.charAt(i + 1) == 'C')
                 {
-                    number += (romanValue('L') - romanValue('X'));
-                    i++;
-                }
-                else if (s.charAt(i + 1) == 'C')
-                {
-                    number += (romanValue('C') - romanValue('X'));
+                    number += (romanValue(s.charAt(i + 1)) - romanValue(s.charAt(i)));
                     i++;
                 }
                 else
@@ -38,14 +28,9 @@ class Solution {
             }
             else if (i < s.length() - 1 && s.charAt(i) == 'C')
             {
-                if (s.charAt(i + 1) == 'D')
+                if (s.charAt(i + 1) == 'D' || s.charAt(i + 1) == 'M')
                 {
-                    number += (romanValue('D') - romanValue('C'));
-                    i++;
-                }
-                else if (s.charAt(i + 1) == 'M')
-                {
-                    number += (romanValue('M') - romanValue('C'));
+                    number += (romanValue(s.charAt(i + 1)) - romanValue(s.charAt(i)));
                     i++;
                 }
                 else
@@ -53,6 +38,8 @@ class Solution {
             }
             else
                 number += romanValue(s.charAt(i));
+            
+            // System.out.println(number);
         }
         
         return number;

@@ -20,16 +20,17 @@ class Solution
             }
         }
         
-        System.out.println("Pairs Index: " + pair[0][1] + " " + pair[1][1]);
-        
+        // If that pair is at the end of the array, just swap
         if (pair[0][1] == nums.length-2 && pair[1][1] == nums.length-1) // O(1)
             nums = swap(pair[0][1], pair[1][1], nums);
+        // Or..
         else
         {
             boolean elementFound = false;
             int smallElement = Integer.MAX_VALUE;
             int smallIndex = 0;
             
+            // Find smallest element
             for (int i = pair[1][1]; i < nums.length; i++)
             {
                 if (nums[i] > pair[0][0] && nums[i] < smallElement)
@@ -40,36 +41,19 @@ class Solution
                 }
             }
             
-            System.out.println("Smallest Element: " + smallElement);
-            
-            if (elementFound)
+            swap(pair[0][1], smallIndex, nums);
+                
+            int[] rest = new int[(nums.length - pair[0][1]) - 1];
+            for (int i = pair[0][1] + 1, j = 0; i < nums.length; i++, j++)
             {
-                swap(pair[0][1], smallIndex, nums);
-                
-                // for (int x : nums)
-                //     System.out.print(x + " ");
-                
-                // System.out.println();
-                // System.out.println("Len: " + ((nums.length - pair[0][1]) - 1));
-                
-                int[] rest = new int[(nums.length - pair[0][1]) - 1];
-                for (int i = pair[0][1] + 1, j = 0; i < nums.length; i++, j++)
-                {
-                    // System.out.println("i: " + i + " j: " + j);
-                    rest[j] = nums[i];
-                }
-                
-                Arrays.sort(rest);
-                
-                // for (int x : rest)
-                //     System.out.print(x + " ");
-                
-                // System.out.println();
-                    
-                for (int i = pair[0][1] + 1, j = 0; i < nums.length; i++, j++)
-                {
-                     nums[i] = rest[j];
-                }
+                rest[j] = nums[i];
+            }
+
+            Arrays.sort(rest);
+
+            for (int i = pair[0][1] + 1, j = 0; i < nums.length; i++, j++)
+            {
+                 nums[i] = rest[j];
             }
         }
         

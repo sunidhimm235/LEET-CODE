@@ -71,10 +71,6 @@ class Solution
                      nums[i] = rest[j];
                 }
             }
-            else
-            {
-                swap(pair[1][1], pair[0][1], nums);
-            }
         }
         
         for (int x : nums)

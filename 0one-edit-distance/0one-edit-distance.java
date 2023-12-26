@@ -41,8 +41,6 @@ class Solution {
                 i++;
                 j++;   
             }
-            
-            System.out.println(changes);
         }
         
         if (i < m || j < n)
